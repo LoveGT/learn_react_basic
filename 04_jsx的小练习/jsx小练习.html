@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>jsx语法规则</title>
     <style>
-      .title  {
+      .title {
         background: orange;
         width: 200px;
       }
@@ -20,13 +20,19 @@
   <script src="../js/babel.min.js"></script>
 
   <script type="text/babel">
-    const myId = "ATGUIGU";
-    const myData = "Hello, react";
+    const data = ['Angular', 'React', 'Vue']
     // 1.创建虚拟DOM
     const VDOM = (
-      <h2 className='title' id={myId.toLocaleLowerCase()}>
-        <span style={{color: 'red',fontSize: '30px'}}>{myData}</span>
-      </h2>
+      <div>
+        <h1>JS前端框架列表</h1>
+        <ul>
+          {
+            data.map((item) => {
+              return <li key={item}>{item}</li>
+            })
+          }
+        </ul>
+      </div>
     );
     //2.渲染虚拟DOM到真实dom
     ReactDOM.render(VDOM, document.getElementById("test"));
