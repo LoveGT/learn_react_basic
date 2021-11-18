@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr1 = [1, 3, 4, 5];
+      let arr2 = [2, 4, 6, 8];
+      console.log(...arr1);
+      let arr3 = [...arr1, ...arr2];
+      console.log(arr3);
+      function sum(...nums) {
+        console.log(nums);
+        return nums.reduce((preValue, currentValue) => {
+          return preValue + currentValue;
+        });
+      }
+      console.log(sum(1, 2, 2));
+
+      const person = {
+        name: "gt",
+        age: 18,
+      };
+      //  console.log(...person); //报错
+      // 复制的操作
+      const person2 = { ...person };
+
+      // 合并的操作
+      const person3 = { ...person, name: "lyj", height: 1.65 };
+    </script>
+  </body>
+</html>
