@@ -15,6 +15,7 @@
   <script src="../js/react.development.js"></script>
   <script src="../js/react-dom.development.js"></script>
   <script src="../js/babel.min.js"></script>
+  <script src="../js/prop-types.js"></script>
   <script type="text/babel">
     //创建类式组件
     class Person extends React.Component {
@@ -38,13 +39,24 @@
         );
       }
     }
+    // prop验证
+    Person.propTypes = {
+        name: PropTypes.string.isRequired,
+        sex: PropTypes.string,
+        age: PropTypes.number,
+        speak: PropTypes.func
+      }
+      Person.defaultProps = {
+        sex: '神',
+        age: 18
+      }
     //渲染组件到页面
     ReactDOM.render(
-      <Person name="tome" age={16} sex="女" />,
+      <Person name="gaotao" age={16} speak={speak}/>,
       document.getElementById("test")
     );
     ReactDOM.render(
-      <Person name="pitter" age={28} sex="男" />,
+      <Person name="pitter" sex="男" />,
       document.getElementById("test1")
     );
     ReactDOM.render(
@@ -54,5 +66,8 @@
 
     const p = { name: "高涛", sex: "男", age: 18 };
     ReactDOM.render(<Person {...p} />, document.getElementById("test3"));
+    function speak() {
+      console.log('wo shuo hua le');
+    }
   </script>
 </html>
