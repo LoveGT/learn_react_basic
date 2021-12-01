@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+  </body>
+</html>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+<script src="../js/prop-types.js"></script>
+
+<script type="text/babel">
+  class Demo extends React.Component{
+    handleClick = () => {
+      console.log(1111);
+      console.log(this.input1);
+    }
+    render() {
+      return( 
+        <div>
+            <input type="text" ref={c => this.input1 = c} placeholder='点击旁边按钮提示输入框的内容'/>
+            <button onClick={this.handleClick}>点击我</button>
+        </div>
+        )
+    }
+  }
+  ReactDOM.render(<Demo />, document.getElementById("test"));
+</script>
