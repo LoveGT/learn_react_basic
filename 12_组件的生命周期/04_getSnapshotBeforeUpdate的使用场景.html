@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .list {
+      width: 200px;
+      height: 150px;
+      background: skyblue;
+      overflow: auto;
+    }
+    .news {
+      height: 30px;
+    }
+  </style>
+  <body>
+    <div id="test"></div>
+    <script src="../js/17.0.1/react.development.js"></script>
+    <script src="../js/17.0.1/react-dom.development.js"></script>
+    <script src="../js/17.0.1/babel.min.js"></script>
+    <script type="text/babel">
+      // 生命周期的执行顺序
+      class NewsList extends React.Component {
+        state = {
+          newsArr: [],
+        };
+        componentDidMount() {
+          setInterval(() => {
+            const { newsArr } = this.state;
+            //模拟一条新闻
+            const news = "新闻" + (newsArr.length + 1);
+            this.setState({
+              newsArr: [news, ...newsArr],
+            });
+          }, 1000);
+        }
+        render() {
+          return (
+            <div>
+              <div className="list">
+                {
+                  this.state.newsArr.map((n) => {
+                   return <div className="news" key={n}>{n}</div>;
+                  })
+                }
+              </div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<NewsList />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
