@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+  </body>
+</html>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+<script type="text/babel">
+  class Demo extends React.Component {
+    state = {
+      personList: [
+        {
+          id: 1,
+          name: "高小涛",
+          age: 19,
+        },
+        {
+          id: 2,
+          name: "刘仪菁",
+          age: 18,
+        },
+        {
+          id: 3,
+          name: "张小强",
+          age: 20,
+        },
+      ],
+    };
+    addPerson = () => {
+      const {personList} = this.state
+      const p = {
+        id: personList.length + 1,
+        name: "赵小青",
+        age: 21,
+      };
+      this.setState({
+        personList: [p, ...personList],
+      });
+    };
+    render() {
+      return (
+        <div>
+          <h2>hello</h2>
+          <ul>
+            {this.state.personList.map((p) => {
+              return <li key={p.id}>姓名：{p.name}</li>;
+            })}
+          </ul>
+          <button onClick={this.addPerson}>新增一个赵小青</button>
+        </div>
+      );
+    }
+  }
+  ReactDOM.render(<Demo />, document.getElementById("test"));
+</script>
